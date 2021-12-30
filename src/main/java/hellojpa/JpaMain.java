@@ -15,15 +15,10 @@ public class JpaMain {
         tx.begin();
 
         try {
-
-            // 영속
-            Member member1 = new Member(150L, "A");
-            Member member2 = new Member(151L, "B");
-
-            em.persist(member1);
-            em.persist(member2);
-
-            System.out.println("===============");
+            // 영속 엔티티 조회
+            Member member1 = em.find(Member.class, 150L);
+            // 영속 엔티티 데이터 수정
+            member1.setName("changedA");
 
             tx.commit();
         } catch (Exception e) {
