@@ -17,9 +17,11 @@ public class JpaMain {
         try {
             // 영속 엔티티 조회
             Member member1 = em.find(Member.class, 150L);
-            // 영속 엔티티 데이터 삭제
-            em.remove(member1);
+            member1.setName("AA4");
 
+            em.detach(member1);
+
+            System.out.println("=============");
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
