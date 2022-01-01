@@ -16,13 +16,13 @@ public class JpaMain {
 
         try {
             // 영속 엔티티 조회
-            Member member1 = em.find(Member.class, 150L);
-
-            em.clear();
-
-            Member member2 = em.find(Member.class, 150L); // 영속성이 지워졌으므로 select 쿼리 총 2번 나감
+            Member member = new Member();
+            member.setUsername("C");
 
             System.out.println("=============");
+            em.persist(member);
+            System.out.println("=============");
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
